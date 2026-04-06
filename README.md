@@ -1,16 +1,24 @@
-# React + Vite
+# Career Switch Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal job-hunt dashboard built in **60-minute midnight sessions** while working a toxic ESL job and switching careers at 37.
 
-Currently, two official plugins are available:
+### Why I built it
+ESL is dying. I needed a simple, private tool to track applications, statuses, interviews, and filters (remote / Peru / etc.) without relying on spreadsheets or external services. This is a full React frontend (soon full MERN) that I actually use every day.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Features (so far)
+- Add / delete job applications
+- Status tracking (Applied, Interviewing, Offer, Rejected)
+- Filter by status
+- Built under real constraints: old laptop, limited time, harassment at work
 
-## React Compiler
+### Tech
+- React + Vite (frontend)
+- Planning: Node/Express + MongoDB for persistence
+- Deployed version coming soon
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### What I'm learning
+How to ship usable code consistently even when motivation is low. Every commit is a small win toward stable junior web-dev work.
 
-## Expanding the ESLint configuration
+Live demo: (add link after deployment)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Built as part of my deliberate career switch from ESL teaching.
