@@ -1,22 +1,18 @@
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [applications, setApplications] = useState([]);
+  // Lazy initializer loads from localStorage synchronously on first mount
+  const [applications, setApplications] = useState(() => {
+    const saved = localStorage.getItem("applications");
+    console.log("🔄 INITIAL LOAD from localStorage:", saved ? JSON.parse(saved).length : 0, "applications");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const [newApp, setNewApp] = useState({ company: "", role: "", status: "Applied", notes: "" });
   const [editingId, setEditingId] = useState(null);
   const [filter, setFilter] = useState("All");
 
-  // === DEBUG: Load from localStorage on mount ===
-  useEffect(() => {
-    const saved = localStorage.getItem("applications");
-    console.log("🔄 LOADING from localStorage:", saved ? JSON.parse(saved).length : 0, "applications");
-    if (saved) {
-      setApplications(JSON.parse(saved));
-    }
-  }, []);
-
-  // === DEBUG: Save to localStorage every time applications change ===
+  // Save to localStorage whenever applications actually changes
   useEffect(() => {
     console.log("💾 SAVING to localStorage:", applications.length, "applications");
     localStorage.setItem("applications", JSON.stringify(applications));
@@ -64,7 +60,7 @@ function App() {
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif", maxWidth: "900px", margin: "0 auto" }}>
       <h1>Career Switch Tracker</h1>
-      <p style={{ color: "#666" }}>Built by me — midnight sessions • Session 5 (persistence fixed + debug logs)</p>
+      <p style={{ color: "#666" }}>Built by me — midnight sessions • Session 5 (persistence FIXED)</p>
 
       {/* Stats row */}
       <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem", flexWrap: "wrap" }}>
@@ -83,7 +79,7 @@ function App() {
         <form onSubmit={addOrUpdateApplication} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           <input type="text" placeholder="Company" value={newApp.company} onChange={(e) => setNewApp({ ...newApp, company: e.target.value })} style={{ padding: "0.5rem", flex: 1, minWidth: "200px" }} />
           <input type="text" placeholder="Job Title" value={newApp.role} onChange={(e) => setNewApp({ ...newApp, role: e.target.value })} style={{ padding: "0.5rem", flex: 1, minWidth: "200px" }} />
-          <select value={newApp.status} onChange={(e) => setNeApp({ ...newApp, status: e.target.value })} style={{ padding: "0.5rem" }}>
+          <select value={newApp.status} onChange={(e) => setNewApp({ ...newApp, status: e.target.vlue })} style={{ padding: "0.5rem" }}>
             <option value="Applied">Applied</option>
             <option value="Interviewing">Interviewing</option>
             <option value="Offer">Offer</option>
